@@ -2,62 +2,136 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For You 🩶</title>
+  <title>Valentine 🩶</title>
+
+  <!-- Cute fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+
   <style>
     body {
-      background: #f2f2f2;
-      font-family: Arial, sans-serif;
+      background: #f7f5f2;
       text-align: center;
-      padding-top: 100px;
+      padding-top: 120px;
+      font-family: 'Quicksand', sans-serif;
+      overflow: hidden;
     }
+
     h1 {
-      font-size: 2.8em;
-      color: #444;
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      color: #555;
+      margin-bottom: 40px;
     }
+
     button {
       font-size: 1.4em;
-      padding: 15px 30px;
-      margin: 20px;
+      padding: 15px 35px;
+      margin: 15px;
       border: none;
-      border-radius: 30px;
+      border-radius: 40px;
       cursor: pointer;
     }
+
     #yes {
-      background: #555;
+      background: #6b6b6b;
       color: white;
     }
+
     #no {
-      background: #d9d9d9;
+      background: #d6d6d6;
       position: absolute;
     }
-    p {
-      font-size: 1.5em;
-      color: #555;
+
+    /* 💕 Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      font-size: 24px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+
+    .photos img {
+      width: 200px;
+      border-radius: 20px;
+      margin: 10px;
     }
   </style>
 </head>
 
 <body>
-  <h1>Will you be my Valentine baby? 😋🩶</h1>
 
-  <button id="yes" onclick="yesClick()">YES YOU BETTER BE MINE MWHAHAHA</button>
-  <button id="no" onclick="moveNo()">po u hate me🙁</button>
+  <h1>Will you be my Valentine baby? 🩶</h1>
+
+  <button id="yes" onclick="yesClick()">yes</button>
+  <button id="no" onclick="noClick()">no</button>
 
   <script>
+    let noClicks = 0;
+
     function yesClick() {
       document.body.innerHTML = `
-        <h1>YAYY I LOVE YOU SOO MUCHH EHEHEH 🩶🫶</h1>
-        <p>You’re stuck with me now </p>
+        <h1>omg YES YOU BETTER BE MINE HEHEHHE I LOVE YOU THE MOSTEST 🩶🫶</h1>
+
+        <!-- 🎶 Spotify song -->
+        <iframe style="border-radius:12px"
+          src="https://open.spotify.com/embed/track/3hXj5e1ZpYz0cK5Q7n0e7U"
+          width="300"
+          height="80"
+          frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+        </iframe>
+
+        <!-- 📸 Photos -->
+        <div class="photos">
+          <img src="photo1.jpg">
+          <img src="photo2.jpg">
+          <img src="photo3.jpg">
+        </div>
       `;
     }
 
-    function moveNo() {
-      const x = Math.random() * (window.innerWidth - 150);
-      const y = Math.random() * (window.innerHeight - 150);
-      const noBtn = document.getElementById("no");
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
+    function noClick() {
+      noClicks++;
+
+      if (noClicks === 1) {
+        const x = Math.random() * (window.innerWidth - 150);
+        const y = Math.random() * (window.innerHeight - 150);
+        const noBtn = document.getElementById("no");
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+      } else {
+        document.body.innerHTML = `
+          <h1>po u hate me and want me to die😭</h1>
+        `;
+      }
     }
+
+    // 💕 Generate hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "🩶";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }, 400);
   </script>
+
 </body>
 </html>
