@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Valentine 🩶</title>
+  <title>Valentine 💗</title>
 
   <!-- Cute fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500&display=swap" rel="stylesheet">
 
   <style>
     body {
-      background: #f7f5f2;
+      background: #fff0f5;
       text-align: center;
       padding-top: 120px;
       font-family: 'Quicksand', sans-serif;
@@ -19,7 +19,7 @@
     h1 {
       font-family: 'Pacifico', cursive;
       font-size: 3em;
-      color: #555;
+      color: #ff6f91;
       margin-bottom: 40px;
     }
 
@@ -33,12 +33,13 @@
     }
 
     #yes {
-      background: #6b6b6b;
+      background: #ff6f91;
       color: white;
     }
 
     #no {
-      background: #d6d6d6;
+      background: #ffd6e5;
+      color: #ff6f91;
       position: absolute;
     }
 
@@ -48,13 +49,13 @@
       bottom: -10px;
       font-size: 24px;
       animation: floatUp 6s linear infinite;
-      opacity: 0.6;
+      opacity: 0.7;
     }
 
     @keyframes floatUp {
       0% {
         transform: translateY(0);
-        opacity: 0.6;
+        opacity: 0.7;
       }
       100% {
         transform: translateY(-100vh);
@@ -72,7 +73,7 @@
 
 <body>
 
-  <h1>Will you be my Valentine baby? 🩶</h1>
+  <h1>Will you be my Valentine baby? 💗</h1>
 
   <button id="yes" onclick="yesClick()">yes</button>
   <button id="no" onclick="noClick()">no</button>
@@ -82,21 +83,11 @@
 
     function yesClick() {
       document.body.innerHTML = `
-        <h1>omg YES YOU BETTER BE MINE HEHEHHE I LOVE YOU THE MOSTEST 🩶🫶</h1>
-
-        <!-- 🎶 Spotify song -->
-        <iframe style="border-radius:12px"
-          src="https://open.spotify.com/embed/track/3hXj5e1ZpYz0cK5Q7n0e7U"
-          width="300"
-          height="80"
-          frameborder="0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-        </iframe>
-
-        <!-- 📸 Photos -->
+        <h1>omg YES YOU BETTER BE MINE HEHEHHE I LOVE YOU THE MOSTEST 💗🫶</h1>
         <div class="photos">
           <img src="photo1.jpg">
           <img src="photo2.jpg">
+          <img src="photo3.jpg">
         </div>
       `;
     }
@@ -112,16 +103,18 @@
         noBtn.style.top = y + "px";
       } else {
         document.body.innerHTML = `
-          <h1>po u hate me and want me to die😭</h1>
+          <h1>u hate me and want me gone omg 😭</h1>
         `;
       }
     }
 
-    // 💕 Generate hearts
+    // 💗 Generate pink hearts
+    const hearts = ["💗", "💖", "💕"];
+
     setInterval(() => {
       const heart = document.createElement("div");
       heart.className = "heart";
-      heart.innerText = "🩶";
+      heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.fontSize = Math.random() * 20 + 15 + "px";
       document.body.appendChild(heart);
